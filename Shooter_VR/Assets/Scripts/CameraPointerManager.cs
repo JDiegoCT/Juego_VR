@@ -55,7 +55,8 @@ public class CameraPointerManager : MonoBehaviour
             if (_gazedAtObject != hit.transform.gameObject)
             {
                 // New GameObject.
-                _gazedAtObject?.SendMessage("OnPointerExitXR",null,SendMessageOptions.DontRequireReceiver);
+                if (_gazedAtObject != null)
+                { _gazedAtObject?.SendMessage("OnPointerExitXR", null, SendMessageOptions.DontRequireReceiver); }
                 _gazedAtObject = hit.transform.gameObject;
                 _gazedAtObject.SendMessage("OnPointerEnterXR", null, SendMessageOptions.DontRequireReceiver);
                 GazeManager.Instance.StartGazeSelection();
@@ -70,7 +71,8 @@ public class CameraPointerManager : MonoBehaviour
         else
         {
             // No GameObject detected in front of the camera.
-            _gazedAtObject?.SendMessage("OnPointerExitXR",null, SendMessageOptions.DontRequireReceiver);
+            if (_gazedAtObject != null)
+            { _gazedAtObject?.SendMessage("OnPointerExitXR", null, SendMessageOptions.DontRequireReceiver); }
             _gazedAtObject = null;
         }
 

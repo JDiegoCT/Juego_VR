@@ -36,8 +36,7 @@ public class MenuController : MonoBehaviour
         Application.Quit();
     }
     public void Creditos() { 
-        transform.GetChild(0).gameObject.SetActive(true);
-        transform.GetChild(1).gameObject.SetActive(false);        
+        SceneManager.LoadScene("Creditos");           
     }
     public void Menu()
     {
